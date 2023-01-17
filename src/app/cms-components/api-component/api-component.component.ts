@@ -42,6 +42,11 @@ export class ApiComponentComponent implements OnInit {
     return this.employeeForm.controls;
   }
 
+  getDate(date:any){
+    var nDate=new Date(date)
+    return nDate.getDate()+"/"+(nDate.getMonth()+1)+"/"+nDate.getFullYear();
+  }
+
   readEmployee(){
     this.apiService.getEmployees().subscribe((data) => {
      this.Employee = data;
