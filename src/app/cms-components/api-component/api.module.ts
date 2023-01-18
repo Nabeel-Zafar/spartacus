@@ -19,12 +19,12 @@ const STATIC_ROUTES: Routes = [
   //   data: {pageLabel:'/faq'},
   //   canActivate: [CmsPageGuard], 
   // },
-//   {
-//     path:'contact',
-//     component: ApiComponentComponent,
-//     data:{pageLabel:'/contact'},
-//     canActivate: [CmsPageGuard],
-//   }
+  // {
+  //   path:'contact',
+  //   component: ApiComponentComponent,
+  //   data:{pageLabel:'/contact'},
+  //   canActivate: [CmsPageGuard],
+  // }
 ]
 
 @NgModule({ 
