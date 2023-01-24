@@ -18,18 +18,18 @@ import { defaultCmsContentProviders, layoutConfig, mediaConfig } from "@spartacu
   }), provideConfig(<SiteContextConfig>{
     context: {
       currency: ['USD'], 
-      language: ['en'],
+      language: ['en'],                                                                                                                                    
       baseSite: ['electronics-spa'],
       urlParameters:['baseSite', 'language', 'currency']
     },
   }), 
-  provideConfig(<I18nConfig>{
-    i18n: {
-      resources: translations,
-      chunks: translationChunksConfig,
-      fallbackLang: 'en'
-    }, 
-  }),
+  // provideConfig(<I18nConfig>{
+  //   i18n: {
+  //     resources: translations,
+  //     chunks: translationChunksConfig,
+  //     fallbackLang: 'en'  
+  //   }, 
+  // }),
    provideConfig(<FeaturesConfig>{
     features: { 
       level: '4.3'

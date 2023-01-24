@@ -6,4 +6,9 @@ import { ProductSummaryComponent } from '@spartacus/storefront';
   templateUrl: './extra.component.html',
   styleUrls: ['./extra.component.scss']
 })
-export class ExtraComponent extends ProductSummaryComponent {}
+export class ExtraComponent extends ProductSummaryComponent {
+  ngOnInit() {
+  }
+
+}
+

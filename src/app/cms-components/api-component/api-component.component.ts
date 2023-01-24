@@ -2,6 +2,9 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/services/api.service';
+import { Observable } from 'rxjs'
+import { filter, map } from 'rxjs/operators';
+import { VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-api-component',
@@ -13,6 +16,8 @@ export class ApiComponentComponent implements OnInit {
   employeeForm!: FormGroup ;
   Employee:any = [];
 
+  name = 'Whats the version : '+ VERSION.full
+
   constructor(private apiService: ApiService,
     private router: Router,
     private ngZone: NgZone,
@@ -22,13 +27,14 @@ export class ApiComponentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    console.log('VERSION.major',VERSION)
   }
   mainForm() {
     this.employeeForm = this.fb.group({
       name: ['', [Validators.required]],
       email: [
         '',
-        [
+        [    
           Validators.required,
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
         ],
@@ -38,7 +44,7 @@ export class ApiComponentComponent implements OnInit {
   }
 
   get myForm() {
-    return this.employeeForm.controls;
+    return this.employeeForm;
   }
 
   getDate(date:any){
@@ -54,10 +60,14 @@ export class ApiComponentComponent implements OnInit {
   removeEmployee(employee:any, index:any) {
     if(window.confirm('Are you sure?')) {
         this.apiService.deleteEmployee(employee._id).subscribe((data) => {
-          this.Employee.splice(index, 1);
+          this.Employee.splice(index, 1); 
         }
       )    
     }
+  }
+
+  check(){
+    
   }
 
   onSubmit() {
@@ -76,9 +86,9 @@ export class ApiComponentComponent implements OnInit {
           },
         });
       }
-       else{
+      else{
         window.alert("Fill all fields!")
-       }
+      }
     // }
   }
 }
