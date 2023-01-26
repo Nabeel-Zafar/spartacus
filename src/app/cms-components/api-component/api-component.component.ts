@@ -15,6 +15,7 @@ export class ApiComponentComponent implements OnInit {
   submitted = false;
   employeeForm!: FormGroup ;
   Employee:any = [];
+  y:string =" "
 
   name = 'Whats the version : '+ VERSION.full
 
@@ -33,7 +34,7 @@ export class ApiComponentComponent implements OnInit {
     this.employeeForm = this.fb.group({
       name: ['', [Validators.required]],
       email: [
-        '',
+        '',  
         [    
           Validators.required,
           Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,3}$'),
@@ -71,24 +72,28 @@ export class ApiComponentComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log('check',this.employeeForm.value)
-    // if (!this.employeeForm.valid) {
-    //   return false;
-    // } else {
-      if(this.employeeForm.value.name && this.employeeForm.value.phoneNumber && this.employeeForm.value.email){
-        this.apiService.createEmployee(this.employeeForm.value).subscribe({
-          complete: () => {
-            console.log( 'Employee successfully created!'),
-              this.ngZone.run(() => this.router.navigateByUrl('/'));
-          },
-          error: (e) => {
-            console.log(e);
-          },
-        });
+      let x = ["2","3","4"]
+      console.log("this.y",this.y)
+      if(x.includes(this.y)){
+        if(this.employeeForm.value.name && this.employeeForm.value.phoneNumber && this.employeeForm.value.email){
+          this.apiService.createEmployee(this.employeeForm.value).subscribe({
+            complete: () => {
+              console.log( 'Employee successfully created!'),
+                this.ngZone.run(() => this.router.navigateByUrl('/'));
+            },
+            error: (e) => {
+              console.log(e);
+            },
+          });
+        }
+        else{
+          window.alert("Fill all fields!")
+        }
       }
       else{
-        window.alert("Fill all fields!")
+        window.alert(this.y +" "+"is not the right code!")
       }
+      
     // }
   }
 }

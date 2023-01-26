@@ -1,6 +1,11 @@
 <div class="row justify-content-center">
     <div class="col-md-4 register-employee">
       <!-- form card register -->
+      <div class="form-group">
+        <label for="inputName">Enter Code to create user</label>
+        <input class="form-control" type="text" [ngModel]="y" (input)="y=$event.target.value"/>
+        
+      </div>
       <div class="card-body">
         <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
